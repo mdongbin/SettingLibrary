@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SettingLibrary</string>
+
+    <string-array name="values">
+        <item>FIRST</item>
+        <item>SECOND</item>
+        <item>THIRD</item>
+    </string-array>
 </resources>

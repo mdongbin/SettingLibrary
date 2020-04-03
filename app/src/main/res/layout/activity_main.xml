@@ -47,5 +47,25 @@
             android:layout_height="wrap_content"
             android:text="Camera"/>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_fadingTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        app:layout_constraintTop_toBottomOf="@id/layout_camera">
+        <com.tomer.fadingtextview.FadingTextView
+            android:id="@+id/txtFadingTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:timeout="500"
+            app:texts="@array/values"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnFadingTxt"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Hiding Txt"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

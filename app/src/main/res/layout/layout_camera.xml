@@ -9,7 +9,6 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
     <Button
         android:id="@+id/addCameraButton"
         android:layout_width="match_parent"
@@ -118,5 +117,4 @@
         </RelativeLayout>
 
     </RelativeLayout>
-
 </FrameLayout>
