@@ -6,4 +6,3 @@
 2. florent37(Camera)
 3. Fading TextView
 4. Retrofit2(Networking)
-5. 
