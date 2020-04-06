@@ -1,6 +1,5 @@
 package com.example.settinglibrary;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,11 +13,11 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private Button btnQRCode;
-
     private Button btnCamera;
-
     private FadingTextView txtFadingTxt;
     private Button btnFadingTxt;
+    private Button btnRetrofit2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setControls() {
         btnQRCode.setOnClickListener(onQRCode);
-
         btnCamera.setOnClickListener(onCamera);
-
         btnFadingTxt.setOnClickListener(onFadingTxt);
+        btnRetrofit2.setOnClickListener(onRetrofit2);
     }
 
     private void setReference() {
@@ -44,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         txtFadingTxt = findViewById(R.id.txtFadingTxt);
         btnFadingTxt = findViewById(R.id.btnFadingTxt);
+
+        btnRetrofit2 = findViewById(R.id.btnRetrofit2);
     }
 
     private View.OnClickListener onQRCode = new View.OnClickListener() {
@@ -73,6 +73,14 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             String[] values = {"ANDROID", "DEVELOPER", "JUNIOR"};
             txtFadingTxt.setTexts(values);
+        }
+    };
+
+    private View.OnClickListener onRetrofit2 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), Retrofit2Activity.class);
+            startActivity(intent);
         }
     };
 }
