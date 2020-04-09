@@ -35,7 +35,7 @@ public class FirebaseActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 FirebaseDB data = dataSnapshot.child("version").getValue(FirebaseDB.class);
                 txtFB_version.setText("FB version : " + data.getVer_01());
-
+//d
             }
 
             @Override
