@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private FadingTextView txtFadingTxt;
     private Button btnFadingTxt;
     private Button btnRetrofit2;
+    private Button btnFirebase;
 
 
     @Override
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnCamera.setOnClickListener(onCamera);
         btnFadingTxt.setOnClickListener(onFadingTxt);
         btnRetrofit2.setOnClickListener(onRetrofit2);
+        btnFirebase.setOnClickListener(onFirebase);
     }
 
     private void setReference() {
@@ -44,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         btnFadingTxt = findViewById(R.id.btnFadingTxt);
 
         btnRetrofit2 = findViewById(R.id.btnRetrofit2);
+
+        btnFirebase = findViewById(R.id.btnFirebase);
     }
 
     private View.OnClickListener onQRCode = new View.OnClickListener() {
@@ -80,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), Retrofit2Activity.class);
+            startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener onFirebase = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), FirebaseActivity.class);
             startActivity(intent);
         }
     };
