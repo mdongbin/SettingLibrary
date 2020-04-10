@@ -7,5 +7,6 @@ public class Msg {
     protected static final String IP = "192.168.0.1";
     protected static final String Retrofit2URL = "http://www.kobis.or.kr";
     protected static final String Retrofit2_API_KEY = "81c30a144b5e70d819fdea7377ce3e78";
+    protected static final int RC_SIGN_IN = 100;
 
 }
