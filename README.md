@@ -7,3 +7,4 @@
 3. Fading TextView
 4. Retrofit2(Networking)
 5. Firebase Realtime Database
+6. Firebase Auth(Google)
