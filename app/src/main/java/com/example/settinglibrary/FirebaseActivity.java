@@ -36,11 +36,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.util.Arrays;
-import java.util.List;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 public class FirebaseActivity extends AppCompatActivity {
     private static final String TAG = "FirebaseActivity";
@@ -83,6 +80,26 @@ public class FirebaseActivity extends AppCompatActivity {
 
             }
         });
+
+        getFCM();
+    }
+
+    private void getFCM() {
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if(!task.isSuccessful()){
+                            Log.e(TAG, "getInstance Failed !" + task.getException());
+                            return;
+                        }
+
+                        String token = task.getResult().getToken();
+
+                        Log.e(TAG, token);
+                        Toast.makeText(getApplicationContext(), token, Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
     private void FB_Auth() {
