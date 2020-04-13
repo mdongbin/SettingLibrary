@@ -8,3 +8,5 @@
 4. Retrofit2(Networking)
 5. Firebase Realtime Database
 6. Firebase Auth(Google)
+7. Firebase Cloud Messaging(Notification)
+8. Glide(Image)
