@@ -113,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    // with : Context, load : URI, placeholder : 로딩 이미지, error : 오류 이미지
+    // override : 이미지 크기(메모리 절약 차원), into : imgView, thumbnail() : 비율 흐릿하게 보여줌.
+    // asGif() : GIF image 로딩, centerCrop() : 반 자르기.
     private View.OnClickListener onGlide = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -120,7 +123,9 @@ public class MainActivity extends AppCompatActivity {
                 imgView.setVisibility(View.VISIBLE);
                 Glide.with(MainActivity.this).load("https://image.fmkorea.com/files/attac" +
                         "h/new/20180627/425547776/837628905/1125113061/be82" +
-                        "af9c593fedfcc40d20b5a9dae43c.png").into(imgView);
+                        "af9c593fedfcc40d20b5a9dae43c.png").
+                        placeholder(R.mipmap.ic_launcher).
+                        thumbnail(0.2f).into(imgView);
 
                 isGlide++;
             }
