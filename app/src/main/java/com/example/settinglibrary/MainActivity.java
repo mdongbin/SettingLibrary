@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -28,9 +28,13 @@ public class MainActivity extends AppCompatActivity {
     private Button btnRetrofit2;
     private Button btnFirebase;
     private Button btnGlide;
+    private Button btnAsyncTask;
 
     private ImageView imgView;
     private int isGlide = 1;
+    private boolean isAsyncTask = true;
+
+    private MyAsyncTask myAsyncTask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         btnRetrofit2.setOnClickListener(onRetrofit2);
         btnFirebase.setOnClickListener(onFirebase);
         btnGlide.setOnClickListener(onGlide);
+        btnAsyncTask.setOnClickListener(onAsyncTask);
     }
 
     private void setReference() {
@@ -63,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         btnFirebase = findViewById(R.id.btnFirebase);
 
         btnGlide = findViewById(R.id.btnGlide);
+
+        btnAsyncTask = findViewById(R.id.btnAsyncTask);
 
         imgView = findViewById(R.id.imgView);
     }
@@ -137,4 +144,53 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener onAsyncTask = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            myAsyncTask = new MyAsyncTask();
+            myAsyncTask.execute();
+        }
+    };
+
+    public class MyAsyncTask extends AsyncTask<Void, Void, String>{
+        private static final String TAG = "MyAsyncTask";
+        private int count = 0;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+                Log.e(TAG, "onPreExecute");
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                for(int i=0; i<10; i++){
+                    try {
+                        count++;
+                        publishProgress();
+
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                return "START";
+            }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            btnAsyncTask.setText((10 - count) + " 초 남았습니다.");
+
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            btnAsyncTask.setText(s);
+        }
+    }
 }

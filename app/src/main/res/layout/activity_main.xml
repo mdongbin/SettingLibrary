@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <LinearLayout
         android:id="@+id/layout_qrcode"
         android:layout_width="match_parent"
@@ -15,11 +16,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="zxing(QR code)"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="zxing(QR code)"
+        android:textSize="20sp"
+        android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btnQRCode"
@@ -27,6 +28,7 @@
             android:layout_height="wrap_content"
             android:text="QR Code"/>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layout_camera"
         android:layout_width="match_parent"
@@ -107,12 +109,12 @@
             android:text="Firebase"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/layout_Glide"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+    android:id="@+id/layout_Glide"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
 
-        app:layout_constraintTop_toBottomOf="@id/layout_FB">
+    app:layout_constraintTop_toBottomOf="@id/layout_FB">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,6 +126,25 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="GLIDE"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_AsyncTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        app:layout_constraintTop_toBottomOf="@id/layout_Glide">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AsyncTask(Thread)"
+            android:textSize="20sp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnAsyncTask"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="START"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/imgView"
