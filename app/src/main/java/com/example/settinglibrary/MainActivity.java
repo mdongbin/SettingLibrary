@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,9 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.zxing.integration.android.IntentIntegrator;
+import com.muddzdev.styleabletoast.StyleableToast;
 import com.tomer.fadingtextview.FadingTextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private boolean isAsyncTask = true;
 
     private MyAsyncTask myAsyncTask;
+
+    private Button btnCustomToast;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         btnFirebase.setOnClickListener(onFirebase);
         btnGlide.setOnClickListener(onGlide);
         btnAsyncTask.setOnClickListener(onAsyncTask);
+        btnCustomToast.setOnClickListener(onCustomToast);
     }
 
     private void setReference() {
@@ -72,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         btnAsyncTask = findViewById(R.id.btnAsyncTask);
 
         imgView = findViewById(R.id.imgView);
+
+        btnCustomToast = findViewById(R.id.btnCustomToast);
     }
 
     private View.OnClickListener onQRCode = new View.OnClickListener() {
@@ -122,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
     // with : Context, load : URI, placeholder : 로딩 이미지, error : 오류 이미지
     // override : 이미지 크기(메모리 절약 차원), into : imgView, thumbnail() : 비율 흐릿하게 보여줌.
-    // asGif() : GIF image 로딩, centerCrop() : 반 자르기.
+    // asGif() : GIF image 로딩, centerCrop() : 반 자르기..
     private View.OnClickListener onGlide = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -193,4 +202,19 @@ public class MainActivity extends AppCompatActivity {
             btnAsyncTask.setText(s);
         }
     }
+
+    private View.OnClickListener onCustomToast = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+//            new StyleableToast
+//                    .Builder(getApplicationContext())
+//                    .text("Hello world!")
+//                    .textColor(Color.WHITE)
+//                    .backgroundColor(Color.BLUE)
+//                    .show();
+            StyleableToast.makeText(getApplicationContext(), "Hello World!"
+                    , Toast.LENGTH_LONG, R.style.myToast).show();
+
+        }
+    };
 }

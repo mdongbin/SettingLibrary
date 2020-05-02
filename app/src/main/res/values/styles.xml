@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="myToast">
+        <item name="stTextBold">true</item> <!-- text bold -->
+        <item name="stTextColor">#fff</item> <!-- text color -->
+        <item name="stFont">@font/walkway</item> <!-- textFont(require download)  https://www.fontsquirrel.com/fonts/list/popular-->
+        <item name="stTextSize">30sp</item> <!-- text size -->
+        <item name="stColorBackground">#f23</item> <!-- bg color -->
+        <item name="stSolidBackground">true</item> <!-- bg solid -->
+        <item name="stStrokeWidth">3dp</item> <!-- line stroke -->
+        <item name="stStrokeColor">#fff</item> <!-- line color -->
+        <item name="stIconStart">@mipmap/dolphin</item> <!-- start img -->
+        <item name="stIconEnd">@mipmap/dolphin</item> <!-- end img -->
+        <item name="stLength">LONG</item> <!-- LONG or SHORT -->
+        <item name="stGravity">center</item> <!-- top or center -->
+        <item name="stRadius">15dp</item> <!-- rec radius -->
+    </style>
 </resources>

@@ -146,6 +146,25 @@
             android:layout_height="wrap_content"
             android:text="START"/>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_CustomToast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        app:layout_constraintTop_toBottomOf="@id/layout_AsyncTask">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CustomToast(Notice)"
+            android:textSize="20sp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnCustomToast"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="CustomToast"/>
+    </LinearLayout>
     <ImageView
         android:id="@+id/imgView"
         android:layout_width="match_parent"
