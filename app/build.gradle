@@ -68,4 +68,12 @@ dependencies {
 
     // Custom Toast
     implementation 'com.muddzdev:styleabletoast:2.2.3'
+    implementation 'com.google.android.material:material:1.1.0'
+
+    // Chart
+
+    // ViewPager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation project(path: ':MPChartLib')
+
 }
