@@ -1,30 +1,21 @@
 package com.example.settinglibrary;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.settinglibrary.libCalendar.CalendarActivity;
+import com.example.settinglibrary.libChart.ChartActivity;
+import com.example.settinglibrary.libFirebase.FirebaseActivity;
+import com.example.settinglibrary.libRetrofit2.Retrofit2Activity;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.tomer.fadingtextview.FadingTextView;
@@ -41,6 +32,7 @@ public class MainActivity extends AppCompatActivity{
     private Button btnGlide;
     private Button btnAsyncTask;
     private Button btnChart;
+    private Button btnCalendar;
 
     private ImageView imgView;
     private int isGlide = 1;
@@ -70,6 +62,7 @@ public class MainActivity extends AppCompatActivity{
         btnAsyncTask.setOnClickListener(onAsyncTask);
         btnCustomToast.setOnClickListener(onCustomToast);
         btnChart.setOnClickListener(onChart);
+        btnCalendar.setOnClickListener(onCalendar);
     }
 
     private void setReference() {
@@ -93,6 +86,8 @@ public class MainActivity extends AppCompatActivity{
         btnCustomToast = findViewById(R.id.btnCustomToast);
 
         btnChart = findViewById(R.id.btnChart);
+
+        btnCalendar = findViewById(R.id.btnCalendar);
     }
 
     private View.OnClickListener onQRCode = new View.OnClickListener() {
@@ -237,5 +232,11 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
-
+    private View.OnClickListener onCalendar = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+            startActivity(intent);
+        }
+    };
 }

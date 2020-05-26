@@ -26,16 +26,18 @@
         </activity>
         <activity android:name=".CameraActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".Retrofit2Activity"/>
-        <activity android:name=".FirebaseActivity"/>
+        <activity android:name=".libRetrofit2.Retrofit2Activity"/>
+        <activity android:name=".libFirebase.FirebaseActivity"/>
         <service
-            android:name=".FCMService"
+            android:name=".libFirebase.FCMService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name=".ChartActivity"/>
-        <activity android:name=".BarChartActivity"/>
+        <activity android:name=".libChart.ChartActivity"/>
+        <activity android:name=".libChart.BarChartActivity"/>
+        <activity android:name=".libCalendar.CalendarActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 </manifest>

@@ -1,9 +1,10 @@
-package com.example.settinglibrary;
+package com.example.settinglibrary.libChart.Custom;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.widget.TextView;
 
+import com.example.settinglibrary.R;
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.ValueFormatter;

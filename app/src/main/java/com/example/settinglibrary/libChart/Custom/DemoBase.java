@@ -1,5 +1,5 @@
 
-package com.example.settinglibrary;
+package com.example.settinglibrary.libChart.Custom;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.settinglibrary.R;
 import com.github.mikephil.charting.charts.Chart;
 import com.google.android.material.snackbar.Snackbar;
 

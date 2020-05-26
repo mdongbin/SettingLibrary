@@ -1,4 +1,4 @@
-package com.example.settinglibrary;
+package com.example.settinglibrary.libChart;
 
 import android.Manifest;
 import android.content.Intent;
@@ -17,6 +17,11 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 
 
+import com.example.settinglibrary.libChart.Custom.DayAxisValueFormatter;
+import com.example.settinglibrary.libChart.Custom.DemoBase;
+import com.example.settinglibrary.libChart.Custom.MyValueFormatter;
+import com.example.settinglibrary.R;
+import com.example.settinglibrary.libChart.Custom.XYMarkerView;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;

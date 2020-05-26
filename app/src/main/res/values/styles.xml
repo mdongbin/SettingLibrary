@@ -23,4 +23,10 @@
         <item name="stGravity">center</item> <!-- top or center -->
         <item name="stRadius">15dp</item> <!-- rec radius -->
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>

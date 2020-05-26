@@ -1,4 +1,4 @@
-package com.example.settinglibrary;
+package com.example.settinglibrary.libFirebase;
 
 public class FirebaseDB {
     public String ver_01;

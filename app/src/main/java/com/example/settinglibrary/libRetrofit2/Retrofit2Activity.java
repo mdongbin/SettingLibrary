@@ -1,15 +1,16 @@
-package com.example.settinglibrary;
+package com.example.settinglibrary.libRetrofit2;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.settinglibrary.Msg;
+import com.example.settinglibrary.R;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Map;
 
 import retrofit2.Call;

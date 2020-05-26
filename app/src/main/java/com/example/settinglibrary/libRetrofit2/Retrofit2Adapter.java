@@ -1,4 +1,4 @@
-package com.example.settinglibrary;
+package com.example.settinglibrary.libRetrofit2;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.settinglibrary.R;
 
 import java.util.ArrayList;
 import java.util.Map;
