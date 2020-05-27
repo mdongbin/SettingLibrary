@@ -37,7 +37,9 @@
         </service>
         <activity android:name=".libChart.ChartActivity"/>
         <activity android:name=".libChart.BarChartActivity"/>
+        <activity android:name=".libChart.LineChartActivity"/>
         <activity android:name=".libCalendar.CalendarActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 </manifest>

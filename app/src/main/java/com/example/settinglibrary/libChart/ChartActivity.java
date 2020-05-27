@@ -13,6 +13,7 @@ import com.example.settinglibrary.R;
 public class ChartActivity extends AppCompatActivity {
 
     private Button btnBarChart;
+    private Button btnLineChart;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,6 +22,9 @@ public class ChartActivity extends AppCompatActivity {
 
         btnBarChart = findViewById(R.id.btnBarChart);
         btnBarChart.setOnClickListener(this::btnClick);
+
+        btnLineChart = findViewById(R.id.btnLineChart);
+        btnLineChart.setOnClickListener(this::btnClick);
     }
 
     private void btnClick(View v){
@@ -29,6 +33,10 @@ public class ChartActivity extends AppCompatActivity {
         switch(v.getId()){
             case R.id.btnBarChart:
                 intent = new Intent(ChartActivity.this, BarChartActivity.class);
+                startActivity(intent);
+
+            case R.id.btnLineChart:
+                intent = new Intent(ChartActivity.this, LineChartActivity.class);
                 startActivity(intent);
         }
     }
