@@ -1,5 +1,6 @@
 package com.example.settinglibrary;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -20,6 +21,11 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.tomer.fadingtextview.FadingTextView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 public class MainActivity extends AppCompatActivity{
     private static final String TAG = "MainActivity";
 
@@ -33,6 +39,7 @@ public class MainActivity extends AppCompatActivity{
     private Button btnAsyncTask;
     private Button btnChart;
     private Button btnCalendar;
+    private Button btnReadFile;
 
     private ImageView imgView;
     private int isGlide = 1;
@@ -63,6 +70,7 @@ public class MainActivity extends AppCompatActivity{
         btnCustomToast.setOnClickListener(onCustomToast);
         btnChart.setOnClickListener(onChart);
         btnCalendar.setOnClickListener(onCalendar);
+        btnReadFile.setOnClickListener(onReadFile);
     }
 
     private void setReference() {
@@ -88,6 +96,8 @@ public class MainActivity extends AppCompatActivity{
         btnChart = findViewById(R.id.btnChart);
 
         btnCalendar = findViewById(R.id.btnCalendar);
+
+        btnReadFile = findViewById(R.id.btnReadFile);
     }
 
     private View.OnClickListener onQRCode = new View.OnClickListener() {
@@ -237,6 +247,37 @@ public class MainActivity extends AppCompatActivity{
         public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
             startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener onReadFile = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            StringBuffer sb = new StringBuffer();
+
+            try{
+                InputStream is = getResources().openRawResource(R.raw.test);
+//                BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                byte[] buffer = new byte[is.available()];
+
+
+//                while(br.readLine() != null){
+//                    sb.append(br.readLine()).append("\n");
+//                }
+
+                while(is.read(buffer) != -1);
+
+                String result = new String(buffer);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage(result);
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+            }catch(IOException e){
+                e.printStackTrace();
+            }
         }
     };
 }
