@@ -3,6 +3,7 @@ package com.example.settinglibrary;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,12 +20,11 @@ import com.example.settinglibrary.libFirebase.FirebaseActivity;
 import com.example.settinglibrary.libRetrofit2.Retrofit2Activity;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.muddzdev.styleabletoast.StyleableToast;
+import com.squareup.picasso.Picasso;
 import com.tomer.fadingtextview.FadingTextView;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity{
     private static final String TAG = "MainActivity";
@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity{
     private Button btnFadingTxt;
     private Button btnRetrofit2;
     private Button btnFirebase;
-    private Button btnGlide;
+    private Button btnImage;
     private Button btnAsyncTask;
     private Button btnChart;
     private Button btnCalendar;
     private Button btnReadFile;
     private ImageView imgView;
-    private int isGlide = 1;
+    private int isImage = 1;
     private boolean isAsyncTask = true;
     private MyAsyncTask myAsyncTask;
     private Button btnCustomToast;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity{
         btnFadingTxt.setOnClickListener(onFadingTxt);
         btnRetrofit2.setOnClickListener(onRetrofit2);
         btnFirebase.setOnClickListener(onFirebase);
-        btnGlide.setOnClickListener(onGlide);
+        btnImage.setOnClickListener(onImage);
         btnAsyncTask.setOnClickListener(onAsyncTask);
         btnCustomToast.setOnClickListener(onCustomToast);
         btnChart.setOnClickListener(onChart);
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity{
 
         btnFirebase = findViewById(R.id.btnFirebase);
 
-        btnGlide = findViewById(R.id.btnGlide);
+        btnImage = findViewById(R.id.btnImage);
 
         btnAsyncTask = findViewById(R.id.btnAsyncTask);
 
@@ -168,23 +168,61 @@ public class MainActivity extends AppCompatActivity{
     // with : Context, load : URI, placeholder : 로딩 이미지, error : 오류 이미지
     // override : 이미지 크기(메모리 절약 차원), into : imgView, thumbnail() : 비율 흐릿하게 보여줌.
     // asGif() : GIF image 로딩, centerCrop() : 반 자르기..
-    private View.OnClickListener onGlide = new View.OnClickListener() {
+    // Picasso :  이미지 사이즈 변환없이 그대로 표출, 원본 이미지기 때문에 용량이 큼
+    //            이미지 로딩이 빠름(사이즈 무변환), 캐시 이미지 로딩 느림, 고품질, GIF 지원 불가
+    // Glide : Picasso에 비해 많은 기능, 이미지 사이즈 줄여 저장, 상대적으로 적은 메모리
+    //          이미지 로딩 느림(사이즈 변환), 캐시 이미지 로딩 빠름, 저품질, GIF 지원 가능.
+    private View.OnClickListener onImage = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(isGlide % 2 == 1){
-                imgView.setVisibility(View.VISIBLE);
-                Glide.with(MainActivity.this).load("https://image.fmkorea.com/files/attac" +
-                        "h/new/20180627/425547776/837628905/1125113061/be82" +
-                        "af9c593fedfcc40d20b5a9dae43c.png").
-                        placeholder(R.mipmap.ic_launcher).
-                        thumbnail(0.2f).into(imgView);
+            String url = "https://image.fmkorea.com/files/attac" +
+                    "h/new/20180627/425547776/837628905/1125113061/be82" +
+                    "af9c593fedfcc40d20b5a9dae43c.png";
 
-                isGlide++;
-            }
-            else{
-                imgView.setVisibility(View.GONE);
-                isGlide++;
-            }
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Choose Library")
+                    .setMessage("What is the Image Library?")
+                    .setPositiveButton("GLIDE", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if(isImage % 2 == 1){
+                                imgView.setVisibility(View.VISIBLE);
+                                Glide.with(MainActivity.this).load(url).
+                                        placeholder(R.mipmap.ic_launcher).
+                                        thumbnail(0.2f).into(imgView);
+
+                                isImage++;
+                            }
+                            else{
+                                imgView.setVisibility(View.GONE);
+                                isImage++;
+                            }
+                        }
+                    })
+                    .setNegativeButton("PICASSO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // url 부분에 drawble 경로를 넣어도 무방.
+                            if(isImage % 2 == 1){
+                                imgView.setVisibility(View.VISIBLE);
+                                Picasso.get().load(url).into(imgView);
+
+                                isImage++;
+                            }
+                            else{
+                                imgView.setVisibility(View.GONE);
+                                isImage++;
+                            }
+                        }
+                    });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+
+
+
+
 
         }
     };
