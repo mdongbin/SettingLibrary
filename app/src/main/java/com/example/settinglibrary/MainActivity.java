@@ -28,7 +28,6 @@ import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity{
     private static final String TAG = "MainActivity";
-
     private Button btnQRCode;
     private Button btnCamera;
     private FadingTextView txtFadingTxt;
@@ -40,13 +39,10 @@ public class MainActivity extends AppCompatActivity{
     private Button btnChart;
     private Button btnCalendar;
     private Button btnReadFile;
-
     private ImageView imgView;
     private int isGlide = 1;
     private boolean isAsyncTask = true;
-
     private MyAsyncTask myAsyncTask;
-
     private Button btnCustomToast;
 
     @Override
@@ -57,7 +53,10 @@ public class MainActivity extends AppCompatActivity{
         setReference();
         setControls();
 
+
     }
+
+    // region initial References / Controls
 
     private void setControls() {
         btnQRCode.setOnClickListener(onQRCode);
@@ -100,6 +99,10 @@ public class MainActivity extends AppCompatActivity{
         btnReadFile = findViewById(R.id.btnReadFile);
     }
 
+    //endregion
+
+    // region QRCode(ZXing)
+
     private View.OnClickListener onQRCode = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -111,6 +114,10 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
+    // endregion
+
+    // region Camera2
+
     private View.OnClickListener onCamera = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -119,8 +126,9 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
+    // endregion
 
-
+    //region Custom Fading Text
 
     private View.OnClickListener onFadingTxt = new View.OnClickListener() {
         @Override
@@ -130,6 +138,10 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
+    //endregion
+
+    // region (Connecting lib) Retrofit2
+
     private View.OnClickListener onRetrofit2 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -138,6 +150,9 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
+    //endregion
+
+    // region Firebase - Auth / RDB / FCM
     private View.OnClickListener onFirebase = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -145,6 +160,10 @@ public class MainActivity extends AppCompatActivity{
             startActivity(intent);
         }
     };
+
+    //endregion
+
+    //region (image lib) Glide
 
     // with : Context, load : URI, placeholder : 로딩 이미지, error : 오류 이미지
     // override : 이미지 크기(메모리 절약 차원), into : imgView, thumbnail() : 비율 흐릿하게 보여줌.
@@ -169,6 +188,10 @@ public class MainActivity extends AppCompatActivity{
 
         }
     };
+
+    //endregion
+
+    //region Making Single Thread(AsyncTask)
 
     private View.OnClickListener onAsyncTask = new View.OnClickListener() {
         @Override
@@ -220,6 +243,11 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    //endregion
+
+    // region StyleableToast
+
+    // Font Download : https://www.fontsquirrel.com/fonts/calistoga
     private View.OnClickListener onCustomToast = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -229,10 +257,15 @@ public class MainActivity extends AppCompatActivity{
 //                    .textColor(Color.WHITE)
 //                    .backgroundColor(Color.BLUE)
 //                    .show();
+
             StyleableToast.makeText(getApplicationContext(), "Hello World!"
                     , Toast.LENGTH_LONG, R.style.myToast).show();
         }
     };
+
+    // endregion
+
+    // region Chart
 
     private View.OnClickListener onChart = new View.OnClickListener() {
         @Override
@@ -242,6 +275,10 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
+    // endregion
+
+    // region Calendar
+
     private View.OnClickListener onCalendar = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -250,6 +287,9 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
+    // endregion
+
+    //region Read txt File
     private View.OnClickListener onReadFile = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -280,4 +320,6 @@ public class MainActivity extends AppCompatActivity{
             }
         }
     };
+
+    //endregion
 }
